@@ -5,6 +5,7 @@ import com.xiekongye.service.ITestService;
 import junit.framework.TestCase;
 import org.junit.Assert;
 import org.junit.Test;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;
 
@@ -23,9 +24,7 @@ public class controllerTest extends TestCase {
 
         TestController testController = new TestController(testService);
 
-        HashMap<String,Object> model = new HashMap<String, Object>();
-        String viewName = testController.helloWorld(model);
-
-        Assert.assertEquals("helloWorld",viewName);
+        ModelAndView mv = testController.testFreemarker();
+        Assert.assertEquals(mv.getViewName(),"customer");
     }
 }

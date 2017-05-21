@@ -20,7 +20,7 @@ public class TestService implements ITestService {
         List<Customer> customers = new ArrayList<Customer>();
         Customer customer1 = new Customer();
         customer1.setName("zhangjunyao");
-        customer1.setName("23");
+        customer1.setAge(23);
         customer1.setBirthday(new Date(1995,9,1));
         customers.add(customer1);
 
