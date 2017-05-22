@@ -35,7 +35,7 @@ public class TestController {
         return "home";
     }
 
-    @RequestMapping(value = "testFreemarker",method = RequestMethod.GET)
+    @RequestMapping(value = "/testFreemarker",method = RequestMethod.GET)
     public ModelAndView testFreemarker(){
 
         ModelAndView mv = new ModelAndView();
