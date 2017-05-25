@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by You on 2017/5/20.
  */
-@Repository
+@Repository("testService")
 public class TestService implements ITestService {
     public String getInfo() {
         return "Service层输出";
