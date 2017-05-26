@@ -30,7 +30,7 @@ public class HomeController {
         List<Customer> customers = testService.getCustomers();
 
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("home");
+        mv.setViewName("index");
         mv.addObject("customers",customers);
         mv.addObject("serviceInfo",testService.getInfo());
         return mv;
