@@ -11,4 +11,17 @@ require.config({
 
 require(['jquery'],function ($) {
     console.log('RequireJS Jquery load success');
+
+    var userName = $('#userName').val();
+    var password = $('#password').val();
+
+    //注册事件
+    $('#register').on('click',function () {
+       console.log('注册事件');
+    });
+
+    //登陆事件
+    $('#submit').on('click',function () {
+        console.log('登陆事件');
+    });
 });
