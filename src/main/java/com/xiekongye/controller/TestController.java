@@ -1,8 +1,6 @@
 package com.xiekongye.controller;
 
 import com.xiekongye.service.ITestService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -31,7 +29,7 @@ public class TestController {
         model.put("serviceInfo",testService.getInfo());
         model.put("customers",testService.getCustomers());
         System.out.println(param);
-        return "customer";
+        return "/WEB-INF/ftl/user.html";
     }
 
     @RequestMapping(value = {"/testFreemarker"},method = RequestMethod.GET)
@@ -43,7 +41,7 @@ public class TestController {
             System.out.println("NO COOIKE");
         }
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("customer");
+        mv.setViewName("/WEB-INF/ftl/user.html");
         mv.addObject("customers",testService.getCustomers());
         mv.addObject("serviceInfo",testService.getInfo());
         return mv;
