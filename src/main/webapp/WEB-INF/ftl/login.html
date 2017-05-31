@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登陆页</title><!--这里每次都要加上应用名，看看怎么去掉-->
+    <script src="${rc.contextPath}/js/lib/require.js" data-main="${rc.contextPath}/js/login" defer async="true"></script>
+</head>
+<body>
+<div>
+    <form>
+        <input type="text" name="userName" value="" id="userName"/>
+        <input type="password" name="password" value="" id="password"/>
+        <span>
+            <input type="button" name="register" value="注册" id="register"/>
+            <input type="button" name="submit" value="登陆" id="submit"/>
+        </span>
+    </form>
+</div>
+</body>
+</html>

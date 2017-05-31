@@ -1,12 +1,8 @@
 package com.xiekongye.controller;
 
 import com.xiekongye.service.ITestService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.inject.Inject;
@@ -32,15 +28,30 @@ public class TestController {
     public String helloWorld(@RequestParam("param") String param, Map<String,Object> model){
         model.put("serviceInfo",testService.getInfo());
         model.put("customers",testService.getCustomers());
-        return "home";
+        System.out.println(param);
+        return "/WEB-INF/ftl/user.html";
     }
 
-    @RequestMapping(value = "testFreemarker",method = RequestMethod.GET)
-    public ModelAndView testFreemarker(){
+    @RequestMapping(value = {"/testFreemarker"},method = RequestMethod.GET)
+    public ModelAndView testFreemarker(@CookieValue("JSESSIONID")String cookie){
 
+        if (cookie !=null){
+            System.out.println(cookie);
+        }else {
+            System.out.println("NO COOIKE");
+        }
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("customer");
+        mv.setViewName("/WEB-INF/ftl/user.html");
         mv.addObject("customers",testService.getCustomers());
+        mv.addObject("serviceInfo",testService.getInfo());
+        return mv;
+    }
+
+    @RequestMapping("testRequestHeader")
+    public ModelAndView testRequestHeader(@RequestHeader(value = "Accept-Language")String language){
+        System.out.println("Test Request Header : " + language);
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("home");
         return mv;
     }
 
