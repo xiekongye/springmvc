@@ -75,19 +75,19 @@
     <!--</bean>-->
 
     <!--Quertz定时任务-->
-    <bean id="jobBean" class="com.xiekongye.job.MyJobDemo"/>
-    <bean id="jobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
-        <property name="targetObject" ref="jobBean"/>
-        <property name="targetMethod" value="printDate"/>
-        <property name="concurrent" value="false"/>
-    </bean>
+    <!--<bean id="jobBean" class="com.xiekongye.job.MyJobDemo"/>-->
+    <!--<bean id="jobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">-->
+        <!--<property name="targetObject" ref="jobBean"/>-->
+        <!--<property name="targetMethod" value="printDate"/>-->
+        <!--<property name="concurrent" value="false"/>-->
+    <!--</bean>-->
 
-    <bean id="jobTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
-        <property name="jobDetail" ref="jobDetail"/>
-        <property name="cronExpression">
-            <value>0/5 * * * * ?</value>
-        </property>
-    </bean>
+    <!--<bean id="jobTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">-->
+        <!--<property name="jobDetail" ref="jobDetail"/>-->
+        <!--<property name="cronExpression">-->
+            <!--<value>0/5 * * * * ?</value>-->
+        <!--</property>-->
+    <!--</bean>-->
 
     <!--调度工厂-->
     <!--<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">-->
