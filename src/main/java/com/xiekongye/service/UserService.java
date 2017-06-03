@@ -11,7 +11,9 @@ import static org.mockito.Mockito.mock;
 @Service("userService")
 public class UserService implements IUserService {
     public User getUserInfo(String userName) {
-        return mock(User.class);
+        User user = mock(User.class);
+        user.setName(userName);
+        return user;
     }
 
     public boolean saveUserInfo(User user) {
