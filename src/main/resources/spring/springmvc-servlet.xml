@@ -3,8 +3,10 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:amq="http://activemq.apache.org/schema/core"
        xmlns:p="http://www.springframework.org/schema/p"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://activemq.apache.org/schema/core
+        http://activemq.apache.org/schema/core/activemq-core-5.5.0.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context-3.2.xsd
         http://www.springframework.org/schema/mvc
@@ -65,6 +67,17 @@
         <property name="resolveLazily" value="true"/>
     </bean>
 
+    <!--<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">-->
+        <!--<property name="mediaTypes">-->
+            <!--<map>-->
+                <!--<entry key="json" value="application/json"/>-->
+                <!--<entry key="xml" value="text/xml"/>-->
+                <!--<entry key="html" value="text/html"/>-->
+            <!--</map>-->
+        <!--</property>-->
+        <!--<property name="defaultContentType" value="text/html"/>-->
+    <!--</bean>-->
+
     <!--Apache Tiles配置-->
     <!--<bean class="org.springframework.web.servlet.view.tiles3.TilesViewResolver"/>-->
     <!--<bean class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">-->
@@ -101,7 +114,27 @@
     <!--</bean>-->
 
     <!--RMI服务-->
-    <bean class="org.springframework.remoting.jaxws.SimpleJaxWsServiceExporter"
-          p:baseAddress="http://localhost:8888/services"
-    />
+    <!--<bean class="org.springframework.remoting.jaxws.SimpleJaxWsServiceExporter"-->
+          <!--p:baseAddress="http://localhost:8888/services"-->
+    <!--/>-->
+
+    <!--消息队列相关-->
+    <!--<bean id="connectionFactory" class="org.apache.activemq.spring.ActiveMQConnectionFactory">-->
+        <!--&lt;!&ndash;代理地址&ndash;&gt;-->
+        <!--<property name="brokerURL" value="tcp://localhost:61616"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="queue" class="org.apache.activemq.command.ActiveMQQueue">-->
+        <!--<constructor-arg value="demo.queue"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="topic" class="org.apache.activemq.command.ActiveMQTopic">-->
+        <!--<constructor-arg value="demo.topic"/>-->
+    <!--</bean>-->
+
+    <!--使用命名空间的方式配置ActiveMQ的连接工厂-->
+    <amq:connectionFactory id="connectionFactory" brokerURL="tcp://localhost:61616"/>
+
+    <amq:queue id="queue" physicalName="demo.queue"/>
+    <amq:topic id="topic" physicalName="demo.topic"/>
 </beans>

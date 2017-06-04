@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.inject.Inject;
 
@@ -20,9 +21,14 @@ public class UserController {
     @Inject
     private IUserService userService;
 
-    @RequestMapping(value = "/{userName}",method = RequestMethod.GET)
-    public String getUser(@PathVariable("userName") String userName, Model model){
-        model.addAttribute("userInfo",userService.getUserInfo(userName));
-        return "user";
+//    @RequestMapping(value = "/{userName}",method = RequestMethod.GET)
+//    public String getUser(@PathVariable("userName") String userName, Model model){
+//        model.addAttribute("userInfo",userService.getUserInfo(userName));
+//        return "user";
+//    }
+
+    @RequestMapping(value = "/{userName}",method = RequestMethod.GET,headers = {"Accept=text/html,application/json"})
+    public @ResponseBody User getUserInfo(@PathVariable("userName") String userName){
+        return userService.getUserInfo(userName);
     }
 }
