@@ -5,12 +5,15 @@
        xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:amq="http://activemq.apache.org/schema/core"
        xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:jaxws="http://cxf.apache.org/jaxws"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://activemq.apache.org/schema/core
         http://activemq.apache.org/schema/core/activemq-core-5.5.0.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context-3.2.xsd
         http://www.springframework.org/schema/mvc
-        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://cxf.apache.org/jaxws
+        http://cxf.apache.org/schemas/jaxws.xsd">
 
     <!--启用spring注解-->
     <context:annotation-config/>
@@ -66,6 +69,12 @@
         <property name="defaultEncoding" value="UTF-8"/>
         <property name="resolveLazily" value="true"/>
     </bean>
+
+    <!--CXF配置-->
+    <import resource="classpath:META-INF/cxf/cxf.xml"/>
+    <import resource="classpath:META-INF/cxf/cxf-servlet.xml"/>
+
+    <jaxws:endpoint id="testWS" implementor="com.xiekongye.ws.GetOrderDetailImpl" address="/getOrderDetail"/>
 
     <!--<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">-->
         <!--<property name="mediaTypes">-->
@@ -133,8 +142,8 @@
     <!--</bean>-->
 
     <!--使用命名空间的方式配置ActiveMQ的连接工厂-->
-    <amq:connectionFactory id="connectionFactory" brokerURL="tcp://localhost:61616"/>
+    <!--<amq:connectionFactory id="connectionFactory" brokerURL="tcp://localhost:61616"/>-->
 
-    <amq:queue id="queue" physicalName="demo.queue"/>
-    <amq:topic id="topic" physicalName="demo.topic"/>
+    <!--<amq:queue id="queue" physicalName="demo.queue"/>-->
+    <!--<amq:topic id="topic" physicalName="demo.topic"/>-->
 </beans>
