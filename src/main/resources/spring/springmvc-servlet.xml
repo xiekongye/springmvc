@@ -74,7 +74,7 @@
     <import resource="classpath:META-INF/cxf/cxf.xml"/>
     <import resource="classpath:META-INF/cxf/cxf-servlet.xml"/>
 
-    <jaxws:endpoint id="testWS" implementor="com.xiekongye.ws.GetOrderDetailImpl" address="/getOrderDetail"/>
+    <jaxws:endpoint id="testWS" implementor="com.xiekongye.cxfws.GetOrderDetailImpl" address="/getOrderDetail"/>
 
     <!--<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">-->
         <!--<property name="mediaTypes">-->

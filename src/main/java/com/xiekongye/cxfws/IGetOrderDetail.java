@@ -1,4 +1,4 @@
-package com.xiekongye.ws;
+package com.xiekongye.cxfws;
 
 import javax.jws.WebService;
 

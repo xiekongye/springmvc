@@ -1,4 +1,4 @@
-package com.xiekongye.ws;
+package com.xiekongye.cxfws;
 
 /**
  * Created by You on 2017/6/19.
